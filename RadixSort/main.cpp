@@ -23,7 +23,7 @@ void populateArray(int randomNumbers[], const int count);
 
 int main(void) {
 
-    std::srand(std::time(0));
+    std::srand((unsigned)time(0));
 
     int numbers[ARRAY_SIZE];
     populateArray(numbers, ARRAY_SIZE);
