@@ -70,22 +70,22 @@ void CountingSort(int randomNumbers[])
         C[i] = C[i] + C[i - 1];
     }
 
+    /*for (int i = 0; i < TEST_RANGE; i++) {
+        std::cout << C[i] << " ";
+    }
+    std::cout << "OUTPUT OF C \n\n";*/
 
-        for (int i = 0; i < TEST_ARRAY_SIZE; i++) {
-            std::cout << B[i] << " ";
-        }
-        std::cout << "PRE-SORTED OUTPUT OF ARR \n\n";
 
 
     for (int j = TEST_ARRAY_SIZE - 1; j >= 0; j--) {
         B[C[randomNumbers[j]] - 1] = randomNumbers[j]; // using the -1 because i'm starting from 0
         C[randomNumbers[j]] = C[randomNumbers[j]] - 1;
     }
-        for (int i = 0; i < TEST_ARRAY_SIZE; i++) {
-            std::cout << B[i] << " ";
-        }
-        std::cout << "SORTED OUTPUT OF ARR \n\n";
-        //should be 0 2 3 5
+
+    for (int i = 0; i < TEST_ARRAY_SIZE; i++) {
+        std::cout << B[i] << " ";
+    }
+    std::cout << "SORTED OUTPUT OF ARR \n\n"; //should be 0 2 3 5
 }
 
 
