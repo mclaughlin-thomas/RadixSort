@@ -17,28 +17,62 @@ precondition/postcondition style or given/task/return style.
 #include <ctime>    // For time()
 
 const int ARRAY_SIZE = 100;
+const int RANGE = 100;
+const int SHIFT_AMMOUNT = 1000;
+
+const int TEST_ARRAY_SIZE = 4;
+const int TEST_RANGE = 6;
 
 void populateArray(int randomNumbers[], const int count);
+
+void CountingSort(int randomNumbers[]);
+
+int decrement(const int number);
+
+int increment(const int number);
 
 
 int main(void) {
 
     std::srand((unsigned)time(0));
 
-    int numbers[ARRAY_SIZE];
-    populateArray(numbers, ARRAY_SIZE);
+    int t_numbers[] = { 0, 2, 3, 5};
+
+    CountingSort(t_numbers);
+    
 
     return 0;
 }
 
-void populateArray(int randomNumbers[], const int count) {
-    const int min = 1000;
-    const int max = 9999;
 
-    // Generate random 4 digit numbers
-    for (int i = 0; i < count; ++i) {
-        randomNumbers[i] = min + std::rand() % ((max - min) + 1);
+
+void CountingSort(int randomNumbers[])
+{
+    int B[TEST_ARRAY_SIZE]; // ARRAY_SIZE acts as n
+    int C[TEST_RANGE]; // RANGE acts as K: if goes up to 7 max, the range is 8(0-7)
+
+    for (int i = 0; i < TEST_RANGE; i++) {
+        C[i] = 0;
     }
+
+        for (int i = 0; i < TEST_RANGE; i++) {
+            std::cout << C[i] << " ";
+        }
+        std::cout << "TESTING INIT OF C \n";
+
+
+    for (int j = 0; j < TEST_ARRAY_SIZE; j++) {
+        C[randomNumbers[j]] = C[randomNumbers[j]] + 1;
+        // C[i] now contains the number of elements equal to i.
+
+    }
+
+        for (int i = 0; i < TEST_RANGE; i++) {
+            std::cout << C[i] << " ";
+        }
+        std::cout << "TESTING COUNT OF C \n";
+
+    
 }
 
 
@@ -61,3 +95,23 @@ void populateArray(int randomNumbers[], const int count) {
 //      RADIX-SORT(A, n, d)
 //1         for i = 1 to d
 //2             use a stable sort to sort array A[1:n] on digit i
+
+
+
+//void populateArray(int randomNumbers[], const int count) {
+//    const int min = 1000;
+//    const int max = 1099;
+//
+//    // Generate random 4 digit numbers
+//    for (int i = 0; i < count; ++i) {
+//        randomNumbers[i] = min + std::rand() % ((max - min) + 1);
+//    }
+//}
+//
+//int decrement(const int number) {
+//    return number - SHIFT_AMMOUNT;
+//}
+//
+//int increment(const int number) {
+//    return number + SHIFT_AMMOUNT;
+//}
