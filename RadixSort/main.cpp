@@ -53,7 +53,7 @@ void populateArray(int randomNumbers[], const int count) {
 //8             C[i] = C[i] + C[i - 1]
 //9         // C[i] now contains the number of elements less than or equal to i.
 //10        // Copy A to B, starting from the end of A.
-//11        for j = n downto 1
+//11        for j = n down to 1
 //12            B[C[A[j]]] = A[j]
 //13            C[A[j]] = C[A[j]] - 1     // to handle duplicate values
 //14 return B
