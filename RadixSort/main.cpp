@@ -55,12 +55,6 @@ void CountingSort(int randomNumbers[])
         C[i] = 0;
     }
 
-        for (int i = 0; i < TEST_RANGE; i++) {
-            std::cout << C[i] << " ";
-        }
-        std::cout << "TESTING INIT OF C \n\n";
-
-
     for (int j = 0; j < TEST_ARRAY_SIZE; j++) {
         C[randomNumbers[j]] = C[randomNumbers[j]] + 1;
         // C[i] now contains the number of elements equal to i.
