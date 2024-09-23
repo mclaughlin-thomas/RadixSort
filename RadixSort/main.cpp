@@ -72,6 +72,14 @@ void CountingSort(int randomNumbers[])
         }
         std::cout << "TESTING COUNT OF C \n";
 
+    for (int i = 1; i < TEST_RANGE; i++) {
+        C[i] = C[i] + C[i - 1];
+    }
+
+        for (int i = 0; i < TEST_RANGE; i++) {
+            std::cout << C[i] << " ";
+        }
+        std::cout << "OUTPUT OF C \n";
     
 }
 
