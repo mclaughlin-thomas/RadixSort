@@ -86,6 +86,7 @@ void CountingSort(int randomNumbers[])
         std::cout << B[i] << " ";
     }
     std::cout << "SORTED OUTPUT OF ARR \n\n"; //should be 0 2 3 5
+    //return that b
 }
 
 
