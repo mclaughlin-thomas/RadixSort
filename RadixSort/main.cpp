@@ -42,32 +42,43 @@ int main(void) {
 }
 
 
-void CountingSort(int randomNumbers[], int B[], int digit)
+void CountingSort(int randomNumbers[], int B[], int digitPlace)
 {
     int C[TEST_RANGE] = { 0 }; // RANGE acts as K: if goes up to 7 max, the range is 8(0-7)
+    int digit;
 
+    //count occurrences
     for (int j = 0; j < TEST_ARRAY_SIZE; j++) {
-        C[randomNumbers[j]] = C[randomNumbers[j]] + 1;
+        digit = (randomNumbers[j] / digitPlace) % TEST_RANGE; // Get the digit at the current place value
+        C[digit] = C[digit] + 1;
+        //C[randomNumbers[j]] = C[randomNumbers[j]] + 1; //OLD VERSION
         // C[i] now contains the number of elements equal to i.
     }
 
+    //sum up
     for (int i = 1; i < TEST_RANGE; i++) {
         C[i] = C[i] + C[i - 1];
     }
 
     for (int j = TEST_ARRAY_SIZE - 1; j >= 0; j--) {
-        B[C[randomNumbers[j]] - 1] = randomNumbers[j]; // using the -1 because i'm starting from 0
-        C[randomNumbers[j]] = C[randomNumbers[j]] - 1;
+        digit = (randomNumbers[j] / digitPlace) % TEST_RANGE; // Get the digit at the current place value
+        B[C[digit] - 1] = randomNumbers[j];
+        C[digit] = C[digit] - 1;
+        //B[C[randomNumbers[j]] - 1] = randomNumbers[j]; // using the -1 because i'm starting from 0
+        //C[randomNumbers[j]] = C[randomNumbers[j]] - 1;
     }
+
 }
 
 void RadixSort(int randomNumbers[], int d)
 {
     int B[TEST_ARRAY_SIZE];   // Array to temporarily hold the data.
 
-    for (int digit = 1; digit <= d; digit++)
+    for (int digitPlace = 1; digitPlace <= d*10; digitPlace *= 10)
     {
-        CountingSort(randomNumbers, B, digit);
+        CountingSort(randomNumbers, B, digitPlace);
+
+        //grabbed from CS 312: Main Project, Stage 3 HW. I looked ahead :)
         // Now copy B to A. Note that this wastes some time, O(n) time, where n is the length of the array.
         // Note that the actual time wasted is proportional to n * d, but d is the (small) number of digits, so that the time is still O(n).
         for (int k = 0; k < TEST_ARRAY_SIZE; k++)
