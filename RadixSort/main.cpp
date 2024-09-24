@@ -26,11 +26,18 @@ const int TEST_RANGE = 31;
 
 const int TEST_ARRAY_SIZE = 4;
 
-
-
-
+// Given:  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+// Task:   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+// Return: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
 void CountingSort(int randomNumbers[], int B[], int digit);
 
+// Given:  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+// Task:   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+// Return: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
 void RadixSort(int randomNumbers[], int d);
 
 
@@ -40,8 +47,9 @@ int main(void) {
 
     RadixSort(t_numbers, 1);
     
+    std::cout << "SORTED ARRAY" << std::endl;
     for (int i = 0; i < TEST_ARRAY_SIZE; i++) {
-        std::cout << t_numbers[i] << " ";
+        std::cout <<  t_numbers[i] << " ";
     }
 
     return 0;
@@ -84,7 +92,7 @@ void RadixSort(int randomNumbers[], int d)
     {
         CountingSort(randomNumbers, B, digitPlace);
 
-        //grabbed from CS 312: Main Project, Stage 3 HW. I looked ahead :)
+        //grabbed from CS 312: Main Project, Stage 3 HW.
         // Now copy B to A. Note that this wastes some time, O(n) time, where n is the length of the array.
         // Note that the actual time wasted is proportional to n * d, but d is the (small) number of digits, so that the time is still O(n).
         for (int k = 0; k < TEST_ARRAY_SIZE; k++)
