@@ -23,14 +23,6 @@ const int SHIFT_AMMOUNT = 1000;
 const int TEST_ARRAY_SIZE = 4;
 const int TEST_RANGE = 6;
 
-void populateArray(int randomNumbers[], const int count);
-
-void CountingSort(int randomNumbers[]);
-
-int decrement(const int number);
-
-int increment(const int number);
-
 
 int main(void) {
 
@@ -46,9 +38,8 @@ int main(void) {
 
 
 
-void CountingSort(int randomNumbers[])
+void CountingSort(int randomNumbers[], int B[])
 {
-    int B[TEST_ARRAY_SIZE]; // ARRAY_SIZE acts as n
     int C[TEST_RANGE]; // RANGE acts as K: if goes up to 7 max, the range is 8(0-7)
 
     for (int i = 0; i < TEST_RANGE; i++) {
@@ -106,26 +97,21 @@ void CountingSort(int randomNumbers[])
 //13            C[A[j]] = C[A[j]] - 1     // to handle duplicate values
 //14 return B
 
+
+void RadixSort(int randomNumbers[], int d)
+{
+    int B[TEST_ARRAY_SIZE];   // Array to temporarily hold the data.
+
+    for (int digit = 1; digit <= d; digit++)
+    {
+        CountingSort(randomNumbers, B, digit);
+        // Now copy B to A. Note that this wastes some time, O(n) time, where n is the length of the array.
+        // Note that the actual time wasted is proportional to n * d, but d is the (small) number of digits, so that the time is still O(n).
+        for (int k = 0; k < MaxPlusOne; k++)
+            A[k] = B[k];
+    }
+}
+
 //      RADIX-SORT(A, n, d)
 //1         for i = 1 to d
 //2             use a stable sort to sort array A[1:n] on digit i
-
-
-
-//void populateArray(int randomNumbers[], const int count) {
-//    const int min = 1000;
-//    const int max = 1099;
-//
-//    // Generate random 4 digit numbers
-//    for (int i = 0; i < count; ++i) {
-//        randomNumbers[i] = min + std::rand() % ((max - min) + 1);
-//    }
-//}
-//
-//int decrement(const int number) {
-//    return number - SHIFT_AMMOUNT;
-//}
-//
-//int increment(const int number) {
-//    return number + SHIFT_AMMOUNT;
-//}
