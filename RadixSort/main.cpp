@@ -13,8 +13,6 @@ precondition/postcondition style or given/task/return style.
 */
 
 #include <iostream>
-#include <cstdlib>  // For rand()
-#include <ctime>    // For time()
 
 
 const int TEST_ARRAY_SIZE = 4;
