@@ -12,12 +12,22 @@ main, and documentation for each function other than main, where this documentat
 precondition/postcondition style or given/task/return style.
 */
 
-#include <iostream>
 
+#include <iostream>
+#include <cmath>
+
+// MAKE RANGE DEPEND ON MAX DIGIT AS WELL 
+// Maybe make array dynamic as well
+// CHANGE BELOW FOR NUMBER OF PLACES
+const int MAX_DIGITS = 4;
+// CHANGE ABOVE FOR NUMBER OF PLACES
+const int MAX_PLACE = pow(10, (MAX_DIGITS - 1));;
+const int TEST_RANGE = 31;
 
 const int TEST_ARRAY_SIZE = 4;
-const int TEST_RANGE = 6;
-const int MAX_DIGITS = 4;
+
+
+
 
 void CountingSort(int randomNumbers[], int B[], int digit);
 
@@ -26,9 +36,7 @@ void RadixSort(int randomNumbers[], int d);
 
 int main(void) {
 
-    std::srand((unsigned)time(0));
-
-    int t_numbers[] = { 15, 22, 30, 5 };
+    int t_numbers[] = { 15, 22, 30, 5 };;
 
     RadixSort(t_numbers, 1);
     
@@ -72,7 +80,7 @@ void RadixSort(int randomNumbers[], int d)
 {
     int B[TEST_ARRAY_SIZE];   // Array to temporarily hold the data.
 
-    for (int digitPlace = 1; digitPlace <= d*10; digitPlace *= 10)
+    for (int digitPlace = 1; digitPlace <= MAX_PLACE; digitPlace *= 10)
     {
         CountingSort(randomNumbers, B, digitPlace);
 
