@@ -16,13 +16,12 @@ precondition/postcondition style or given/task/return style.
 #include <cstdlib>  // For rand()
 #include <ctime>    // For time()
 
-const int ARRAY_SIZE = 100;
-const int RANGE = 100;
-const int SHIFT_AMMOUNT = 1000;
 
 const int TEST_ARRAY_SIZE = 4;
 const int TEST_RANGE = 6;
 const int MAX_DIGITS = 4;
+
+void CountingSort(int randomNumbers[], int B[], int digit);
 
 void RadixSort(int randomNumbers[], int d);
 
@@ -31,58 +30,36 @@ int main(void) {
 
     std::srand((unsigned)time(0));
 
-    int t_numbers[] = { 5, 2, 0, 3};
+    int t_numbers[] = { 15, 22, 30, 5 };
 
     RadixSort(t_numbers, 1);
     
+    for (int i = 0; i < TEST_ARRAY_SIZE; i++) {
+        std::cout << t_numbers[i] << " ";
+    }
 
     return 0;
 }
 
 
-
 void CountingSort(int randomNumbers[], int B[], int digit)
 {
-    int C[TEST_RANGE]; // RANGE acts as K: if goes up to 7 max, the range is 8(0-7)
-
-    for (int i = 0; i < TEST_RANGE; i++) {
-        C[i] = 0;
-    }
+    int C[TEST_RANGE] = { 0 }; // RANGE acts as K: if goes up to 7 max, the range is 8(0-7)
 
     for (int j = 0; j < TEST_ARRAY_SIZE; j++) {
         C[randomNumbers[j]] = C[randomNumbers[j]] + 1;
         // C[i] now contains the number of elements equal to i.
-
     }
-
-    /*for (int i = 0; i < TEST_RANGE; i++) {
-        std::cout << C[i] << " ";
-    }
-    std::cout << "TESTING COUNT OF C \n\n";*/
 
     for (int i = 1; i < TEST_RANGE; i++) {
         C[i] = C[i] + C[i - 1];
     }
 
-    /*for (int i = 0; i < TEST_RANGE; i++) {
-        std::cout << C[i] << " ";
-    }
-    std::cout << "OUTPUT OF C \n\n";*/
-
-
-
     for (int j = TEST_ARRAY_SIZE - 1; j >= 0; j--) {
         B[C[randomNumbers[j]] - 1] = randomNumbers[j]; // using the -1 because i'm starting from 0
         C[randomNumbers[j]] = C[randomNumbers[j]] - 1;
     }
-
-    for (int i = 0; i < TEST_ARRAY_SIZE; i++) {
-        std::cout << B[i] << " ";
-    }
-    std::cout << "SORTED OUTPUT OF ARR \n\n"; //should be 0 2 3 5
-    //return that b
 }
-
 
 void RadixSort(int randomNumbers[], int d)
 {
@@ -96,5 +73,4 @@ void RadixSort(int randomNumbers[], int d)
         for (int k = 0; k < TEST_ARRAY_SIZE; k++)
             randomNumbers[k] = B[k];
     }
-    std::cout << "done";
 }
