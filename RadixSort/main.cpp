@@ -14,17 +14,26 @@ precondition/postcondition style or given/task/return style.
 
 
 #include <iostream>
+#include <cstdlib>  // For rand()
 #include <cmath>
+#include <ctime>    // For time()
 
-// MAKE RANGE DEPEND ON MAX DIGIT AS WELL 
-// Maybe make array dynamic as well
-// CHANGE BELOW FOR NUMBER OF PLACES
-const int MAX_DIGITS = 4;
-// CHANGE ABOVE FOR NUMBER OF PLACES
-const int MAX_PLACE = pow(10, (MAX_DIGITS - 1));;
-const int TEST_RANGE = 31;
 
-const int TEST_ARRAY_SIZE = 4;
+// CHANGE TO DESIRE
+const int MAX_DIGITS = 4; // digits in the form: xxxx
+const int TEST_ARRAY_SIZE = 100;
+const int TEST_RANGE = 9999; // 9999 to adhere to 4 digit 
+//      TEST RANGE VALUES FOR RANDOM | Ideally we would know max before hand
+//      1 digits: 9
+//      2 digits: 99
+//      3 digits: 999
+//      4 digits: 9999
+//      5 digits: 99999
+// CHANGE TO DESIRE
+
+const int MAX_PLACE = pow(10, (MAX_DIGITS - 1));
+
+
 
 // Given:  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 //         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
@@ -40,10 +49,21 @@ void CountingSort(int randomNumbers[], int B[], const int digitPlace);
 // Return: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
 void RadixSort(int randomNumbers[]);
 
+// Given:  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+// Task:   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+//         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+// Return: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+void populateArray(int randomNumbers[], const int size ,int maxDigits);
+
+
 
 int main(void) {
+    
+    std::srand((unsigned)time(0));
 
-    int t_numbers[] = { 15, 22, 30, 5 };;
+    int  t_numbers[TEST_ARRAY_SIZE];
+    populateArray(t_numbers, TEST_ARRAY_SIZE, MAX_DIGITS);
 
     RadixSort(t_numbers);
     
@@ -97,5 +117,14 @@ void RadixSort(int randomNumbers[])
         // Note that the actual time wasted is proportional to n * d, but d is the (small) number of digits, so that the time is still O(n).
         for (int k = 0; k < TEST_ARRAY_SIZE; k++)
             randomNumbers[k] = B[k];
+    }
+}
+
+void populateArray(int randomNumbers[], const int size, int maxDigits) {
+    maxDigits = pow(10, MAX_DIGITS); 
+
+    // Generate random 4 digit numbers
+    for (int i = 0; i < size; ++i) {
+        randomNumbers[i] = std::rand() % maxDigits; // 0 to 1 below next 10^n (10^(n) -1 ), thus satisfying # of digits
     }
 }
