@@ -31,21 +31,21 @@ const int TEST_ARRAY_SIZE = 4;
 // Task:   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 //         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
 // Return: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
-void CountingSort(int randomNumbers[], int B[], int digit);
+void CountingSort(int randomNumbers[], int B[], const int digitPlace);
 
 // Given:  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 //         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
 // Task:   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 //         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
 // Return: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
-void RadixSort(int randomNumbers[], int d);
+void RadixSort(int randomNumbers[]);
 
 
 int main(void) {
 
     int t_numbers[] = { 15, 22, 30, 5 };;
 
-    RadixSort(t_numbers, 1);
+    RadixSort(t_numbers);
     
     std::cout << "SORTED ARRAY" << std::endl;
     for (int i = 0; i < TEST_ARRAY_SIZE; i++) {
@@ -56,7 +56,7 @@ int main(void) {
 }
 
 
-void CountingSort(int randomNumbers[], int B[], int digitPlace)
+void CountingSort(int randomNumbers[], int B[], const int digitPlace)
 {
     int C[TEST_RANGE] = { 0 }; // RANGE acts as K: if goes up to 7 max, the range is 8(0-7)
     int digit;
@@ -84,7 +84,7 @@ void CountingSort(int randomNumbers[], int B[], int digitPlace)
 
 }
 
-void RadixSort(int randomNumbers[], int d)
+void RadixSort(int randomNumbers[])
 {
     int B[TEST_ARRAY_SIZE];   // Array to temporarily hold the data.
 
