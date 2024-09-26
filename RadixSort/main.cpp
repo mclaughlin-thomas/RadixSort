@@ -15,16 +15,16 @@ precondition/postcondition style or given/task/return style.
 
 #include <iostream>
 #include <cstdlib>  // For rand()
-#include <cmath>
+#include <cmath>    // For pow()
 #include <ctime>    // For time()
 
 
 // CHANGE TO DESIRE ---
-constexpr  int MAX_DIGITS = 4; // digits in the form: xxxx
-constexpr  int TEST_ARRAY_SIZE = 100;
+constexpr  int MAX_DIGITS = 4; // Numbers in the form: xxxx
+constexpr  int TEST_ARRAY_SIZE = 100; // Size of the array
 constexpr  int TEST_RANGE = 9999; // 9999 to adhere to 4 digit, 99999 to adhere to 5 digit, and so on.
 // CHANGE TO DESIRE ---
-const int MAX_PLACE = pow(10, (MAX_DIGITS - 1));
+const int MAX_PLACE = static_cast<int>(pow(10, (MAX_DIGITS - 1)));
 
 
 // Given:  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -71,7 +71,7 @@ int main(void) {
 
 void CountingSort(int randomNumbers[], int B[], const int digitPlace)
 {
-    int C[TEST_RANGE] = { 0 }; // RANGE acts as K: if goes up to 7 max, the range is 8(0-7)
+    int C[TEST_RANGE] = { 0 }; // RANGE acts as K: if goes up to 7 max, the range is 8 (0-7)
     int digit;
 
     //count occurrences
@@ -114,7 +114,7 @@ void RadixSort(int randomNumbers[]){
 
 void populateArray(int randomNumbers[], const int size, const int maxDigits) {
     
-    int maxPlace = pow(10, maxDigits);
+    const int maxPlace = static_cast<int>(pow(10, maxDigits));
 
     // Generate random 4 digit numbers
     for (int i = 0; i < size; ++i) {
