@@ -14,15 +14,15 @@ precondition/postcondition style or given/task/return style.
 
 
 #include <iostream>
-#include <cstdlib>  // For rand()
-#include <cmath>    // For pow()
-#include <ctime>    // For time()
+#include <cstdlib>      // For rand()
+#include <cmath>        // For pow()
+#include <ctime>        // For time()
 
 
 // CHANGE TO DESIRE ---
-constexpr  int MAX_DIGITS = 4; // Numbers in the form: xxxx
-constexpr  int TEST_ARRAY_SIZE = 100; // Size of the array
-constexpr  int TEST_RANGE = 9999; // 9999 to adhere to 4 digit, 99999 to adhere to 5 digit, and so on.
+constexpr  int MAX_DIGITS = 4;          // Numbers in the form: xxxx
+constexpr  int TEST_ARRAY_SIZE = 100;   // Size of the array
+constexpr  int TEST_RANGE = 9999;       // 9999 to adhere to 4 digit, 99999 to adhere to 5 digit, and so on.
 // CHANGE TO DESIRE ---
 const int MAX_PLACE = static_cast<int>(pow(10, (MAX_DIGITS - 1)));
 
@@ -69,8 +69,7 @@ int main(void) {
 }
 
 
-void CountingSort(int randomNumbers[], int B[], const int digitPlace)
-{
+void CountingSort(int randomNumbers[], int B[], const int digitPlace) {
     int C[TEST_RANGE] = { 0 }; // RANGE acts as K: if goes up to 7 max, the range is 8 (0-7)
     int digit;
 
@@ -96,19 +95,18 @@ void CountingSort(int randomNumbers[], int B[], const int digitPlace)
     }
 }
 
-void RadixSort(int randomNumbers[]){
+void RadixSort(int randomNumbers[]) {
     
     int B[TEST_ARRAY_SIZE];   // Array to temporarily hold the data.
 
-    for (int digitPlace = 1; digitPlace <= MAX_PLACE; digitPlace *= 10)
-    {
+    for (int digitPlace = 1; digitPlace <= MAX_PLACE; digitPlace *= 10) {
         CountingSort(randomNumbers, B, digitPlace);
 
-        //grabbed from CS 312: Main Project, Stage 3 HW.
         // Now copy B to A. Note that this wastes some time, O(n) time, where n is the length of the array.
-        // Note that the actual time wasted is proportional to n * d, but d is the (small) number of digits, so that the time is still O(n).
-        for (int k = 0; k < TEST_ARRAY_SIZE; k++)
+        for (int k = 0; k < TEST_ARRAY_SIZE; k++) {
             randomNumbers[k] = B[k];
+        }
+          
     }
 }
 
@@ -118,6 +116,6 @@ void populateArray(int randomNumbers[], const int size, const int maxDigits) {
 
     // Generate random 4 digit numbers
     for (int i = 0; i < size; ++i) {
-        randomNumbers[i] = std::rand() % maxPlace; // 0 to 1 below next 10^n (10^(n) -1 ), thus satisfying # of digits
+        randomNumbers[i] = std::rand() % maxPlace; // Provides numbers from 0 to 1 below next 10^n (10^(n) -1 ), thus resulting in numbers that have no more than our desired places of digits
     }
 }
