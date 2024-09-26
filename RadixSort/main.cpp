@@ -48,7 +48,7 @@ void RadixSort(int randomNumbers[]);
 // Task:   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 //         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
 // Return: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
-void populateArray(int randomNumbers[], const int size ,int maxDigits);
+void populateArray(int randomNumbers[], const int size ,const int maxDigits);
 
 
 
@@ -116,11 +116,12 @@ void RadixSort(int randomNumbers[])
     }
 }
 
-void populateArray(int randomNumbers[], const int size, int maxDigits) {
-    maxDigits = pow(10, MAX_DIGITS); 
+void populateArray(int randomNumbers[], const int size, const int maxDigits) {
+    
+    int maxPlace = pow(10, maxDigits);
 
     // Generate random 4 digit numbers
     for (int i = 0; i < size; ++i) {
-        randomNumbers[i] = std::rand() % maxDigits; // 0 to 1 below next 10^n (10^(n) -1 ), thus satisfying # of digits
+        randomNumbers[i] = std::rand() % maxPlace; // 0 to 1 below next 10^n (10^(n) -1 ), thus satisfying # of digits
     }
 }
