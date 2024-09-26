@@ -19,14 +19,12 @@ precondition/postcondition style or given/task/return style.
 #include <ctime>    // For time()
 
 
-// CHANGE TO DESIRE
+// CHANGE TO DESIRE ---
 constexpr  int MAX_DIGITS = 4; // digits in the form: xxxx
 constexpr  int TEST_ARRAY_SIZE = 100;
 constexpr  int TEST_RANGE = 9999; // 9999 to adhere to 4 digit, 99999 to adhere to 5 digit, and so on.
-// CHANGE TO DESIRE
-
+// CHANGE TO DESIRE ---
 const int MAX_PLACE = pow(10, (MAX_DIGITS - 1));
-
 
 
 // Given:  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -57,10 +55,9 @@ int main(void) {
     std::srand((unsigned)time(0));
 
     int  numbers[TEST_ARRAY_SIZE];
-    populateArray(numbers, TEST_ARRAY_SIZE, MAX_DIGITS);
+    populateArray(numbers, TEST_ARRAY_SIZE, MAX_DIGITS); // Populate the numbers array with random numbers in specified range
 
-    //sort the array
-    RadixSort(numbers);
+    RadixSort(numbers); // Sort the numbers array in ascending order
     
     // Output the newly sorted array
     std::cout << "SORTED ARRAY" << std::endl;
@@ -97,11 +94,10 @@ void CountingSort(int randomNumbers[], int B[], const int digitPlace)
         //B[C[randomNumbers[j]] - 1] = randomNumbers[j]; // using the -1 because i'm starting from 0
         //C[randomNumbers[j]] = C[randomNumbers[j]] - 1;
     }
-
 }
 
-void RadixSort(int randomNumbers[])
-{
+void RadixSort(int randomNumbers[]){
+    
     int B[TEST_ARRAY_SIZE];   // Array to temporarily hold the data.
 
     for (int digitPlace = 1; digitPlace <= MAX_PLACE; digitPlace *= 10)
