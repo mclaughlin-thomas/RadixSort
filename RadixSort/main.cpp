@@ -51,7 +51,7 @@ void populateArray(int randomNumbers[], const int size ,const int maxDigits);
 
 int main(void) {
     
-    std::srand((unsigned)time(0));
+    std::srand((unsigned)time(0)); // Seeding with time to guarantee different set of numbers each run
 
     int  numbers[TEST_ARRAY_SIZE];
     populateArray(numbers, TEST_ARRAY_SIZE, MAX_DIGITS); // Populate the numbers array with random numbers in specified range
@@ -118,7 +118,7 @@ void populateArray(int randomNumbers[], const int size, const int maxDigits) {
     
     const int maxPlace = static_cast<int>(pow(10, maxDigits));
 
-    // Generate random 4 digit numbers
+    // Generate random maxDigits digit numbers
     for (int i = 0; i < size; ++i) {
         randomNumbers[i] = std::rand() % maxPlace; // Provides numbers from 0 to 1 below next 10^n (10^(n) -1 ), thus resulting in numbers that have no more than our desired places of digits
     }
