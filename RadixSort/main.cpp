@@ -56,14 +56,16 @@ int main(void) {
     
     std::srand((unsigned)time(0));
 
-    int  t_numbers[TEST_ARRAY_SIZE];
-    populateArray(t_numbers, TEST_ARRAY_SIZE, MAX_DIGITS);
+    int  numbers[TEST_ARRAY_SIZE];
+    populateArray(numbers, TEST_ARRAY_SIZE, MAX_DIGITS);
 
-    RadixSort(t_numbers);
+    //sort the array
+    RadixSort(numbers);
     
+    // Output the newly sorted array
     std::cout << "SORTED ARRAY" << std::endl;
     for (int i = 0; i < TEST_ARRAY_SIZE; i++) {
-        std::cout <<  t_numbers[i] << " ";
+        std::cout <<  numbers[i] << " ";
     }
 
     return 0;
