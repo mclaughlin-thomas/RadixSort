@@ -57,14 +57,14 @@ void populateArray(int numbers[], const int size ,const int maxDigits);
 
 
 int main(void) {
-    
+
     std::srand((unsigned)time(0)); // Seeding with time to guarantee different set of numbers each run
 
     int numbers[ARRAY_SIZE];
     populateArray(numbers, ARRAY_SIZE, MAX_DIGITS); // Populate the numbers array with random numbers in specified range
 
     RadixSort(numbers, MAX_PLACE); // Sort the numbers array in ascending order
-    
+
     // Output the newly sorted array
     std::cout << "SORTED ARRAY" << std::endl;
     for (int i = 0; i < ARRAY_SIZE; i++) {
@@ -109,20 +109,20 @@ void RadixSort(int numbers[], const int maxPlace) {
 
     // Iterate over each digit place
     for (int digitPlace = 1; digitPlace <= maxPlace; digitPlace *= 10) {
-        
+
         CountingSort(numbers, B, digitPlace); // CountingSort will sort based on the provided digit place
 
         // Now copying B to randomNumbers. Note that this wastes some time, O(n) time, where n is the length of the array
         for (int k = 0; k < ARRAY_SIZE; k++) {
             numbers[k] = B[k];
         }
-          
+
     }
 
 }
 
 void populateArray(int numbers[], const int size, const int maxDigits) {
-    
+
     const int maxPlace = static_cast<int>(pow(10, maxDigits));
 
     // Generate random maxDigits digit numbers
