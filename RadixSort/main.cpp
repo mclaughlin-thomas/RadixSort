@@ -39,7 +39,7 @@ void CountingSort(int randomNumbers[], int B[], const int digitPlace);
 // Task:   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 //         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
 // Return: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
-void RadixSort(int randomNumbers[]);
+void RadixSort(int numbers[]);
 
 // Given:  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 //         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
@@ -96,18 +96,18 @@ void CountingSort(int randomNumbers[], int B[], const int digitPlace) {
 
 }
 
-void RadixSort(int randomNumbers[]) {
+void RadixSort(int numbers[]) {
     
     int B[TEST_ARRAY_SIZE];   // Array to temporarily hold the data.
 
     // Iterate over each digit place
     for (int digitPlace = 1; digitPlace <= MAX_PLACE; digitPlace *= 10) {
         
-        CountingSort(randomNumbers, B, digitPlace); // CountingSort will sort based on the provided digit place
+        CountingSort(numbers, B, digitPlace); // CountingSort will sort based on the provided digit place
 
         // Now copying B to randomNumbers. Note that this wastes some time, O(n) time, where n is the length of the array
         for (int k = 0; k < TEST_ARRAY_SIZE; k++) {
-            randomNumbers[k] = B[k];
+            numbers[k] = B[k];
         }
           
     }
