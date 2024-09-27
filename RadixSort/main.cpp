@@ -20,9 +20,9 @@ precondition/postcondition style or given/task/return style.
 
 
 // CHANGE TO DESIRE ---
-constexpr int MAX_DIGITS = 4;          // Numbers in the form: xxxx
-constexpr int TEST_ARRAY_SIZE = 100;   // Size of the array
-constexpr int TEST_RANGE = 9999;       // 9999 to adhere to 4 digit, 99999 to adhere to 5 digit, and so on.
+constexpr int MAX_DIGITS = 4;   // Numbers in the form: xxxx
+constexpr int ARRAY_SIZE = 100; // Size of the array
+constexpr int RANGE = 9999;     // 9999 to adhere to 4 digit, 99999 to adhere to 5 digit, and so on.
 // CHANGE TO DESIRE ---
 const int MAX_PLACE = static_cast<int>(pow(10, (MAX_DIGITS - 1)));  // Smallest power of 10 that has the number of digits specified by MAX_DIGITS
 
@@ -53,14 +53,14 @@ int main(void) {
     
     std::srand((unsigned)time(0)); // Seeding with time to guarantee different set of numbers each run
 
-    int numbers[TEST_ARRAY_SIZE];
-    populateArray(numbers, TEST_ARRAY_SIZE, MAX_DIGITS); // Populate the numbers array with random numbers in specified range
+    int numbers[ARRAY_SIZE];
+    populateArray(numbers, ARRAY_SIZE, MAX_DIGITS); // Populate the numbers array with random numbers in specified range
 
     RadixSort(numbers, MAX_PLACE); // Sort the numbers array in ascending order
     
     // Output the newly sorted array
     std::cout << "SORTED ARRAY" << std::endl;
-    for (int i = 0; i < TEST_ARRAY_SIZE; i++) {
+    for (int i = 0; i < ARRAY_SIZE; i++) {
         std::cout <<  numbers[i] << " ";
     }
 
@@ -70,24 +70,24 @@ int main(void) {
 
 void CountingSort(int numbers[], int B[], const int digitPlace) {
 
-    int C[TEST_RANGE] = { 0 }; // RANGE acts as K: if goes up to 7 max, the range is 8 (0-7)
+    int C[RANGE] = { 0 }; // RANGE acts as K: if goes up to 7 max, the range is 8 (0-7)
     int digit;
 
     //count occurrences
-    for (int j = 0; j < TEST_ARRAY_SIZE; j++) {
-        digit = (numbers[j] / digitPlace) % TEST_RANGE; // Get the digit at the current place value
+    for (int j = 0; j < ARRAY_SIZE; j++) {
+        digit = (numbers[j] / digitPlace) % RANGE; // Get the digit at the current place value
         C[digit] = C[digit] + 1;
         //C[randomNumbers[j]] = C[randomNumbers[j]] + 1; //OLD VERSION
         // C[i] now contains the number of elements equal to i.
     }
 
     //sum up
-    for (int i = 1; i < TEST_RANGE; i++) {
+    for (int i = 1; i < RANGE; i++) {
         C[i] = C[i] + C[i - 1];
     }
 
-    for (int j = TEST_ARRAY_SIZE - 1; j >= 0; j--) {
-        digit = (numbers[j] / digitPlace) % TEST_RANGE; // Get the digit at the current place value
+    for (int j = ARRAY_SIZE - 1; j >= 0; j--) {
+        digit = (numbers[j] / digitPlace) % RANGE; // Get the digit at the current place value
         B[C[digit] - 1] = numbers[j];
         C[digit] = C[digit] - 1;
         //B[C[randomNumbers[j]] - 1] = randomNumbers[j]; // using the -1 because i'm starting from 0
@@ -98,7 +98,7 @@ void CountingSort(int numbers[], int B[], const int digitPlace) {
 
 void RadixSort(int numbers[], const int maxPlace) {
     
-    int B[TEST_ARRAY_SIZE];   // Array to temporarily hold the data.
+    int B[ARRAY_SIZE];   // Array to temporarily hold the data.
 
     // Iterate over each digit place
     for (int digitPlace = 1; digitPlace <= maxPlace; digitPlace *= 10) {
@@ -106,7 +106,7 @@ void RadixSort(int numbers[], const int maxPlace) {
         CountingSort(numbers, B, digitPlace); // CountingSort will sort based on the provided digit place
 
         // Now copying B to randomNumbers. Note that this wastes some time, O(n) time, where n is the length of the array
-        for (int k = 0; k < TEST_ARRAY_SIZE; k++) {
+        for (int k = 0; k < ARRAY_SIZE; k++) {
             numbers[k] = B[k];
         }
           
