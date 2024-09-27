@@ -20,9 +20,9 @@ precondition/postcondition style or given/task/return style.
 
 
 // CHANGE TO DESIRE ---
-constexpr  int MAX_DIGITS = 4;          // Numbers in the form: xxxx
-constexpr  int TEST_ARRAY_SIZE = 100;   // Size of the array
-constexpr  int TEST_RANGE = 9999;       // 9999 to adhere to 4 digit, 99999 to adhere to 5 digit, and so on.
+constexpr int MAX_DIGITS = 4;          // Numbers in the form: xxxx
+constexpr int TEST_ARRAY_SIZE = 100;   // Size of the array
+constexpr int TEST_RANGE = 9999;       // 9999 to adhere to 4 digit, 99999 to adhere to 5 digit, and so on.
 // CHANGE TO DESIRE ---
 const int MAX_PLACE = static_cast<int>(pow(10, (MAX_DIGITS - 1)));  // Smallest power of 10 that has the number of digits specified by MAX_DIGITS
 
@@ -39,14 +39,14 @@ void CountingSort(int randomNumbers[], int B[], const int digitPlace);
 // Task:   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 //         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
 // Return: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
-void RadixSort(int numbers[]);
+void RadixSort(int numbers[], const int maxPlace);
 
 // Given:  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 //         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
 // Task:   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 //         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
 // Return: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
-void populateArray(int randomNumbers[], const int size ,const int maxDigits);
+void populateArray(int numbers[], const int size ,const int maxDigits);
 
 
 int main(void) {
@@ -56,7 +56,7 @@ int main(void) {
     int numbers[TEST_ARRAY_SIZE];
     populateArray(numbers, TEST_ARRAY_SIZE, MAX_DIGITS); // Populate the numbers array with random numbers in specified range
 
-    RadixSort(numbers); // Sort the numbers array in ascending order
+    RadixSort(numbers, MAX_PLACE); // Sort the numbers array in ascending order
     
     // Output the newly sorted array
     std::cout << "SORTED ARRAY" << std::endl;
@@ -96,12 +96,12 @@ void CountingSort(int numbers[], int B[], const int digitPlace) {
 
 }
 
-void RadixSort(int numbers[]) {
+void RadixSort(int numbers[], const int maxPlace) {
     
     int B[TEST_ARRAY_SIZE];   // Array to temporarily hold the data.
 
     // Iterate over each digit place
-    for (int digitPlace = 1; digitPlace <= MAX_PLACE; digitPlace *= 10) {
+    for (int digitPlace = 1; digitPlace <= maxPlace; digitPlace *= 10) {
         
         CountingSort(numbers, B, digitPlace); // CountingSort will sort based on the provided digit place
 
