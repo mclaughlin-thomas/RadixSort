@@ -27,25 +27,32 @@ constexpr int RANGE = 9999;     // 9999 to adhere to 4 digit, 99999 to adhere to
 const int MAX_PLACE = static_cast<int>(pow(10, (MAX_DIGITS - 1)));  // Smallest power of 10 that has the number of digits specified by MAX_DIGITS
 
 
-// Given:  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-//         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
-// Task:   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-//         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
-// Return: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
-void CountingSort(int randomNumbers[], int B[], const int digitPlace);
+// Given:  numbers      - An array to be populated with random integers.
+//         B            - The size of the array.
+//         digitPlace   - The maximum number of desired digits for each integer in numbers array.
+// 
+// Task:   XXXXX
+// 
+// Return: XXXXX        - XXXXX
+void CountingSort(int numbers[], int B[], const int digitPlace);
 
-// Given:  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-//         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
-// Task:   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-//         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
-// Return: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+// Given:  numbers      - An array to be populated with random integers.
+//         maxPlace     - The size of the array.
+// 
+// Task:   XXXXX
+// 
+// Return: numbers      - An array of integers, now in sorted, ascending order.
 void RadixSort(int numbers[], const int maxPlace);
 
-// Given:  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-//         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
-// Task:   xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-//         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
-// Return: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+// Given:  numbers      - An array to be populated with random integers.
+//         size         - The size of the array.
+//         maxDigits    - The maximum number of desired digits for each integer in numbers array.
+// 
+// Task:   Populate the given array with random integers, where each integer has a maximum of
+//         maxDigits places. The random integers are generated in the range from 0 to the largest
+//         number that can be represented without exceeding the maximum number of digits: maxDigits.
+// 
+// Return: numbers      - An array of integers populated with random integers in the desired range of digits.
 void populateArray(int numbers[], const int size ,const int maxDigits);
 
 
@@ -114,13 +121,13 @@ void RadixSort(int numbers[], const int maxPlace) {
 
 }
 
-void populateArray(int randomNumbers[], const int size, const int maxDigits) {
+void populateArray(int numbers[], const int size, const int maxDigits) {
     
     const int maxPlace = static_cast<int>(pow(10, maxDigits));
 
     // Generate random maxDigits digit numbers
     for (int i = 0; i < size; ++i) {
-        randomNumbers[i] = std::rand() % maxPlace; // Provides numbers from 0 to 1 below next 10^n (10^(n) -1 ), thus resulting in numbers that have no more than our desired places of digits
+        numbers[i] = std::rand() % maxPlace; // Provides numbers from 0 to 1 below next 10^n (10^(n) -1 ), thus resulting in numbers that have no more than our desired places of digits
     }
 
 }
