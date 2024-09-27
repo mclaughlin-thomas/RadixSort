@@ -27,8 +27,8 @@ constexpr int RANGE = 9999;     // 9999 to adhere to 4 digit, 99999 to adhere to
 const int MAX_PLACE = static_cast<int>(pow(10, (MAX_DIGITS - 1)));  // Smallest power of 10 that has the number of digits specified by MAX_DIGITS
 
 
-// Given:  numbers      - An array to be populated with random integers.
-//         B            - The size of the array.
+// Given:  numbers      - An array
+//         B            - An array
 //         digitPlace   - The maximum number of desired digits for each integer in numbers array.
 // 
 // Task:   XXXXX
@@ -36,7 +36,7 @@ const int MAX_PLACE = static_cast<int>(pow(10, (MAX_DIGITS - 1)));  // Smallest 
 // Return: XXXXX        - XXXXX
 void CountingSort(int numbers[], int B[], const int digitPlace);
 
-// Given:  numbers      - An array to be populated with random integers.
+// Given:  numbers      - An array
 //         maxPlace     - The size of the array.
 // 
 // Task:   XXXXX
