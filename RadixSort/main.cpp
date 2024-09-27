@@ -69,6 +69,10 @@ int main(void) {
     std::cout << "SORTED ARRAY" << std::endl;
     for (int i = 0; i < ARRAY_SIZE; i++) {
         std::cout <<  numbers[i] << " ";
+
+        if ((i + 1) % 10 == 0) {
+            std::cout << std::endl;
+        }
     }
 
     return 0;
