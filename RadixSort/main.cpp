@@ -53,7 +53,7 @@ int main(void) {
     
     std::srand((unsigned)time(0)); // Seeding with time to guarantee different set of numbers each run
 
-    int  numbers[TEST_ARRAY_SIZE];
+    int numbers[TEST_ARRAY_SIZE];
     populateArray(numbers, TEST_ARRAY_SIZE, MAX_DIGITS); // Populate the numbers array with random numbers in specified range
 
     RadixSort(numbers); // Sort the numbers array in ascending order
@@ -68,14 +68,14 @@ int main(void) {
 }
 
 
-void CountingSort(int randomNumbers[], int B[], const int digitPlace) {
+void CountingSort(int numbers[], int B[], const int digitPlace) {
 
     int C[TEST_RANGE] = { 0 }; // RANGE acts as K: if goes up to 7 max, the range is 8 (0-7)
     int digit;
 
     //count occurrences
     for (int j = 0; j < TEST_ARRAY_SIZE; j++) {
-        digit = (randomNumbers[j] / digitPlace) % TEST_RANGE; // Get the digit at the current place value
+        digit = (numbers[j] / digitPlace) % TEST_RANGE; // Get the digit at the current place value
         C[digit] = C[digit] + 1;
         //C[randomNumbers[j]] = C[randomNumbers[j]] + 1; //OLD VERSION
         // C[i] now contains the number of elements equal to i.
@@ -87,8 +87,8 @@ void CountingSort(int randomNumbers[], int B[], const int digitPlace) {
     }
 
     for (int j = TEST_ARRAY_SIZE - 1; j >= 0; j--) {
-        digit = (randomNumbers[j] / digitPlace) % TEST_RANGE; // Get the digit at the current place value
-        B[C[digit] - 1] = randomNumbers[j];
+        digit = (numbers[j] / digitPlace) % TEST_RANGE; // Get the digit at the current place value
+        B[C[digit] - 1] = numbers[j];
         C[digit] = C[digit] - 1;
         //B[C[randomNumbers[j]] - 1] = randomNumbers[j]; // using the -1 because i'm starting from 0
         //C[randomNumbers[j]] = C[randomNumbers[j]] - 1;
