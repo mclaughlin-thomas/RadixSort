@@ -15,7 +15,7 @@ Summary:
           Currently, I have RADIX-SORT iterating through the places by increasing the exponent on 10.
           Say we want four digit numbers to be sorted, I first evaluate the max power of 10 that
           encompasses the greatest digit place: in all cases it will be one less than the desired number of
-          digits. For five digit numbers, the max power of 10 to encompass the greatest digit place is 5:
+          digits. For five digit numbers, the max power of 10 to encompass the greatest digit place is 4:
           
           10^(4)= 10,000
 
