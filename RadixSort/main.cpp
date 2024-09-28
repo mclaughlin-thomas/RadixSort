@@ -3,16 +3,37 @@
 // CS-312: Introduction to Algorithms
 
 /*
-Summary:  x
+Summary:  
+          This program follows our textbook's design of RADIX-SORT that uses COUNTING-SORT internally as
+          its stable sort. I have RADIX-SORT set to sort through an array of randomized 4 digit numbers.
+          Currently the array has 100 4-digit numbers, but the size of the array can be adjusted by
+          modifying the ARRAY_SIZE variable to desired size. Also, the program can be modified to evaluate
+          numbers less than, or more than four places by modifying the MAX_DIGITS variable; however, one 
+          must also make sure to update the global for RANGE as well to correctly reflect the max range as
+          to maintain the max place for the numbers when they get randomly initialized.
 
+          Currently, I have RADIX-SORT iterating through the places by increasing the exponent on 10.
+          Say we want four digit numbers to be sorted, I first evaluate the max power of 10 that
+          encompasses the greatest digit place: in all cases it will be one less than the desired number of
+          digits. For five digit numbers, the max power of 10 to encompass the greatest digit place is 5:
+          
+          10^(4)= 10,000
 
-Programming Assignment:  Follow our textbook's design of a RADIX-SORT that uses COUNTING-SORT internally.
-Use it to sort an array of 4-digit decimal numbers. The array should contain 100 4-digit numbers in
-apparent random order at the start. The output should show on the screen the sorted data, perhaps with 10
-numbers per line. Follow the pseudocode in our textbook closely. Be careful with lines 12 and 13 especially.
-Don't forget the documentation: A summary of what the program does overall at the top of the file containing
-main, and documentation for each function other than main, where this documentation is either in the
-precondition/postcondition style or given/task/return style.
+          With that value I can then increment the exponent on 10 to get through each place:
+
+          10^(0) yields the unit place
+          10^(1) yields the tens place
+          10^(2) yields the hundreds place
+
+          I also calculate the next power of 10 which violates the max allotted number of places. For 4 digit
+          numbers, the exponent of 4 will be too many:
+          
+          10^(4)= 10,000
+
+          With the above, we go one place too far and evaluate a place that does not exist with out set of numbers.
+          That is fine however, because this calculation is useful because with this value, whilst iterating
+          through the places, once our iterator reaches this point, we know to stop and the data is sorted.
+
 */
 
 
