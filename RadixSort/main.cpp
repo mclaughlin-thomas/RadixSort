@@ -14,9 +14,9 @@ precondition/postcondition style or given/task/return style.
 
 
 #include <iostream>
-#include <cstdlib>      // For rand()
-#include <cmath>        // For pow()
-#include <ctime>        // For time()
+#include <cstdlib>
+#include <cmath>
+#include <ctime>
 
 
 // CHANGE TO DESIRE ---
@@ -127,11 +127,12 @@ void RadixSort(int numbers[], const int maxPlace) {
 
 void populateArray(int numbers[], const int size, const int maxDigits) {
 
-    const int maxPlace = static_cast<int>(pow(10, maxDigits));
+    const int maxPlace = static_cast<int>(pow(10, maxDigits)) - 1; // With current MAX_DIGITS, the maximum random value is 9999
+    const int minPlace = static_cast<int>(pow(10, maxDigits-1)); // With current MAX_DIGITS, the maximum random value is 1000
 
     // Generate random maxDigits digit numbers
-    for (int i = 0; i < size; ++i) {
-        numbers[i] = std::rand() % maxPlace; // Provides numbers from 0 to 1 below next 10^n (10^(n) -1 ), thus resulting in numbers that have no more than our desired places of digits
+    for (int i = 0; i < size; i++) {
+        numbers[i] = std::rand() % ( maxPlace - minPlace + 1 ) + minPlace; // Provides numbers from 0 to 1 below next 10^n (10^(n) -1 ), thus resulting in numbers that have no more than our desired places of digits
     }
 
 }
