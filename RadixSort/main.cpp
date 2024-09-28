@@ -81,6 +81,8 @@ int main(void) {
 
 void CountingSort(int numbers[], int B[], const int digitPlace) {
 
+    // ALGO INFO
+
     int C[RANGE] = { 0 }; // RANGE acts as K: if goes up to 7 max, the range is 8 (0-7)
     int digit;
 
@@ -108,6 +110,8 @@ void CountingSort(int numbers[], int B[], const int digitPlace) {
 }
 
 void RadixSort(int numbers[], const int maxPlace) {
+
+    // ALGO INFO
     
     int B[ARRAY_SIZE];   // Array to temporarily hold the data.
 
