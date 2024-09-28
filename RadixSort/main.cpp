@@ -81,9 +81,11 @@ int main(void) {
 
 void CountingSort(int numbers[], int B[], const int digitPlace) {
 
-    // ALGO INFO
+    // Counting Sort has a worst case time of theta ( k + n )
+    // Counting Sort has an average case time of theta ( k + n )
+    // Where k is the # of values
 
-    int C[RANGE] = { 0 }; // RANGE acts as K: if goes up to 7 max, the range is 8 (0-7)
+    int C[RANGE] = { 0 }; // RANGE acts as K: if max number goes up to 7, the range is 8 (0-7)
     int digit;
 
     //count occurrences
@@ -111,7 +113,9 @@ void CountingSort(int numbers[], int B[], const int digitPlace) {
 
 void RadixSort(int numbers[], const int maxPlace) {
 
-    // ALGO INFO
+    // Radix Sort has a worst case time of theta ( d (n + k) )
+    // Radix Sort has an average case time of theta ( d (n + k) )
+    // Where k is the # of values, d is the # of digits, and n is the length of the array
     
     int B[ARRAY_SIZE];   // Array to temporarily hold the data.
 
