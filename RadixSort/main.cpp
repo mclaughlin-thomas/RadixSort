@@ -49,10 +49,10 @@ void RadixSort(int numbers[], const int maxPlace);
 //         maxDigits    - The maximum number of desired digits for each integer in numbers array.
 // 
 // Task:   Populate the given array with random integers, where each integer has a maximum of
-//         maxDigits places. The random integers are generated in the range from 0 to the largest
-//         number that can be represented without exceeding the maximum number of digits: maxDigits.
+//         maxDigits places. The random integers are generated in the range from 10^(n-1) to the largest
+//         number that can be represented without exceeding the maximum number of places: maxDigits.
 // 
-// Return: numbers      - An array of integers populated with random integers in the desired range of digits.
+// Return: numbers      - An array of integers populated with random integers with the desired number of places.
 void populateArray(int numbers[], const int size ,const int maxDigits);
 
 
