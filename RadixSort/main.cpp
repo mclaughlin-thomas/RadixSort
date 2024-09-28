@@ -99,20 +99,20 @@ void CountingSort(int numbers[], int B[], const int digitPlace) {
     // Where k is the # of values
 
     //      COUNTING-SORT(A, n, k)
-    //1         let B[1:n] and C[0:k] be new arrays   | I instead initialized all of C's elements to 0 w/o a loop, and passed in array B.
-    //2         for i = 0 to k
-    //3             C[i] = 0                          | Concatenated line with: int C[RANGE] = { 0 };
-    //4         for j = 1 to n
-    //5             C[A[j]] = C[A[j]] + 1
-    //6         // C[i] now contains the number of elements equal to i.
-    //7         for i = 1 to k
-    //8             C[i] = C[i] + C[i - 1]
-    //9         // C[i] now contains the number of elements less than or equal to i.
-    //10        // Copy A to B, starting from the end of A.
-    //11        for j = n down to 1
-    //12            B[C[A[j]]] = A[j]
-    //13            C[A[j]] = C[A[j]] - 1
-    //14        return B                              | B[] was passed in by reference as a parameter, we 'return' B this way.
+    // 1         let B[1:n] and C[0:k] be new arrays   | I instead initialized all of C's elements to 0 w/o a loop, and passed in array B.
+    // 2         for i = 0 to k
+    // 3             C[i] = 0                          | Concatenated line with: int C[RANGE] = { 0 };
+    // 4         for j = 1 to n
+    // 5             C[A[j]] = C[A[j]] + 1
+    // 6         // C[i] now contains the number of elements equal to i.
+    // 7         for i = 1 to k
+    // 8             C[i] = C[i] + C[i - 1]
+    // 9         // C[i] now contains the number of elements less than or equal to i.
+    // 10        // Copy A to B, starting from the end of A.
+    // 11        for j = n down to 1
+    // 12            B[C[A[j]]] = A[j]
+    // 13            C[A[j]] = C[A[j]] - 1
+    // 14        return B                              | B[] was passed in by reference as a parameter, we 'return' B this way.
 
     int C[RANGE] = { 0 }; // RANGE acts as K: if max number goes up to 7, the range is 8 (0-7)
     int digit;
@@ -144,6 +144,10 @@ void RadixSort(int numbers[], const int maxPlace) {
     // Radix Sort has a worst case time of theta ( d (n + k) )
     // Radix Sort has an average case time of theta ( d (n + k) )
     // Where k is the # of values, d is the # of digits, and n is the length of the array
+
+    //      RADIX-SORT(A, n, d)
+    // 1         for i = 1 to d
+    // 2             use a stable sort to sort array A[1:n] on digit i
     
     int B[ARRAY_SIZE];   // Array to temporarily hold the data.
 
@@ -169,7 +173,7 @@ void populateArray(int numbers[], const int size, const int maxDigits) {
 
     // Generate random maxDigits digit numbers
     for (int i = 0; i < size; i++) {
-        numbers[i] = std::rand() % ( maxPlace - minPlace + 1 ) + minPlace; // Provides numbers from 0 to 1 below next 10^n (10^(n) -1 ), thus resulting in numbers that have no more than our desired places of digits
+        numbers[i] = std::rand() % ( maxPlace - minPlace + 1 ) + minPlace; // Provides numbers from minPlace to 1 below next 10^n: (10^(n) -1 ).Thus resulting in numbers that have no more than our desired places of digits
     }
 
 }
