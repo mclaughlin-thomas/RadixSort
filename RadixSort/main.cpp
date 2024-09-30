@@ -129,12 +129,15 @@ void CountingSort(int Numbers[], int B[], const int digitPlace) {
     // 12            B[C[A[j]]] = A[j]
     // 13            C[A[j]] = C[A[j]] - 1
     // 14        return B                              | B[] was passed in by reference as a parameter, we 'return' B this way.
-
-    std::unique_ptr<int[]> C(new int[RANGE]); // Allocate memory for C dynamically (on the heap) | Auto deletes when out of scope
-
-    // Handle memory allocation failure
-    if (C == NULL) { 
-        return;
+    
+    std::unique_ptr<int[]> C; // Declaring a smart pointer, unique_ptr, to manage the dynamic array
+        
+    try {
+        C = std::make_unique<int[]>(RANGE); // Allocate memory for C dynamically (on the heap) | Auto deletes when out of scope
+    }
+    catch (const std::bad_alloc& e) {
+        // Handle failures
+        std::cerr << "Memory allocation failed: " << e.what() << std::endl;
     }
 
     // RANGE acts as K: if max number goes up to 7, the range is 8 (0-7).
