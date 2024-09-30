@@ -116,7 +116,7 @@ void CountingSort(int Numbers[], int B[], const int digitPlace) {
     //      COUNTING-SORT(A, n, k)
     // 1         let B[1:n] and C[0:k] be new arrays   | I instead initialized all of C's elements to 0 w/o a loop, and passed in array B.
     // 2         for i = 0 to k
-    // 3             C[i] = 0                          | Concatenated line with: int C[RANGE] = { 0 };
+    // 3             C[i] = 0
     // 4         for j = 1 to n
     // 5             C[A[j]] = C[A[j]] + 1
     // 6         // C[i] now contains the number of elements equal to i.
@@ -129,7 +129,18 @@ void CountingSort(int Numbers[], int B[], const int digitPlace) {
     // 13            C[A[j]] = C[A[j]] - 1
     // 14        return B                              | B[] was passed in by reference as a parameter, we 'return' B this way.
 
-    int C[RANGE] = { 0 }; // RANGE acts as K: if max number goes up to 7, the range is 8 (0-7).
+    int* C = (int*)malloc(RANGE * sizeof(int)); // Allocate memory for C dynamically (on the heap)
+
+    // Handle memory allocation failure
+    if (C == NULL) { 
+        return;
+    }
+
+    // RANGE acts as K: if max number goes up to 7, the range is 8 (0-7).
+    for (int i = 0; i < RANGE; i++) {
+        C[i] = 0;
+    }
+
     int digit;
 
     // Count the occurrences.
@@ -151,6 +162,7 @@ void CountingSort(int Numbers[], int B[], const int digitPlace) {
         C[digit] = C[digit] - 1; // Decrement the count so we can handle duplicates.
     }
 
+    free(C);
 }
 
 
