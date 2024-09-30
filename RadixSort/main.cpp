@@ -39,6 +39,7 @@ Summary:
 
 #include <iostream>
 #include <cstdlib>
+#include <memory>
 #include <cmath>
 #include <ctime>
 
@@ -129,7 +130,7 @@ void CountingSort(int Numbers[], int B[], const int digitPlace) {
     // 13            C[A[j]] = C[A[j]] - 1
     // 14        return B                              | B[] was passed in by reference as a parameter, we 'return' B this way.
 
-    int* C = (int*)malloc(RANGE * sizeof(int)); // Allocate memory for C dynamically (on the heap)
+    std::unique_ptr<int[]> C(new int[RANGE]); // Allocate memory for C dynamically (on the heap) | Auto deletes when out of scope
 
     // Handle memory allocation failure
     if (C == NULL) { 
@@ -162,7 +163,6 @@ void CountingSort(int Numbers[], int B[], const int digitPlace) {
         C[digit] = C[digit] - 1; // Decrement the count so we can handle duplicates.
     }
 
-    free(C);
 }
 
 
